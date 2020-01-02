@@ -1,4 +1,4 @@
-Title of the project: Bash, Make, Git, and GitHub Prev
+Title of the project: Bash, Make, Git, and GitHub
 
 Date:
 Thu Jan  2 17:09:16 +07 2020
