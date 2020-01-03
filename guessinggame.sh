@@ -14,11 +14,13 @@ function guess_filenum {
         elif [[ $guess -gt $filenum ]]
         then
             echo "There is less... try again:"
-        else
+        elif [[ $guess -lt $filenum ]]
+        then
             echo "There is more... try again:"
+        else
+            echo "You finally guessed it!"
         fi
     done
-    echo "You finally guessed it!"
 }
 
 echo "Welcome to the guessing game!"
