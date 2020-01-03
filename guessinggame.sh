@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
-filenum=$(ls | wc -l)
 
+#Count files and directories include hidden files and hidden directories
+filenum=$(ls -A | wc -l)
+guess=-1
 function guess_filenum {
-    read guess
-    if [[ $guess -eq $filenum ]]
-    then
-        echo "You finally guessed it!"
-    else
-        if [[ $guess -gt $filenum ]]
+    while [ $guess -ne $filenum ];
+    do
+        read guess
+        if ! [[ "$guess" =~ ^[0-9]+$ ]]
+        then
+            echo "Sorry integers only... try again:"
+            guess=-1
+        elif [[ $guess -gt $filenum ]]
         then
             echo "There is less... try again:"
-            guess_filenum
         else
             echo "There is more... try again:"
-            guess_filenum
         fi
-    fi
+    done
+    echo "You finally guessed it!"
 }
 
 echo "Welcome to the guessing game!"
